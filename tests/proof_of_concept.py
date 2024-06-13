@@ -1,4 +1,5 @@
-"""Proof of concept
+"""
+Proof of concept
 """
 
 
@@ -11,7 +12,6 @@ import adafruit_mcp3xxx.mcp3008 as MCP
 from adafruit_mcp3xxx.analog_in import AnalogIn
 
 import RPi.GPIO as GPIO
-
 
 
 # Set up MCP3008 ADC
