@@ -46,5 +46,5 @@ def push_button() -> None:
     """
     GPIO.output(15, GPIO.LOW)
     GPIO.output(14, GPIO.HIGH)
-    sleep(1)
+    sleep(0.01)
     GPIO.output(14, GPIO.LOW)
