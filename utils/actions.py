@@ -24,8 +24,8 @@ channel = AnalogIn(mcp, MCP.P0)
 
 # Set up GPIO
 GPIO.setmode(GPIO.BCM)   # Use physical pin numbering.  The alternative is GPIO.setmode(GPIO.BCM), which uses "NAME" on the pinout diagram instead of "Pin#".
-GPIO.setup(14, GPIO.OUT, initial=GPIO.LOW)   # Set pin 8 to be an output pin, and set initial value to low.
-GPIO.setup(15, GPIO.OUT, initial=GPIO.LOW)   # Set pin 10 to be an output pin, and set initial value to low.
+GPIO.setup(14, GPIO.OUT, initial=GPIO.LOW)
+GPIO.setup(15, GPIO.OUT, initial=GPIO.LOW)
 
 temperature_table = TemperatureTable()
 
@@ -44,6 +44,7 @@ def push_button() -> None:
     """Actuate the motor to press and release the button on the
     air conditioning unit
     """
+    GPIO.output(15, GPIO.LOW)
     GPIO.output(14, GPIO.HIGH)
     sleep(1)
     GPIO.output(14, GPIO.LOW)
