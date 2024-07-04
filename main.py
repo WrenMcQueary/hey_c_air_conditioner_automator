@@ -19,4 +19,6 @@ if __name__ == "__main__":
             push_button()
             ac_currently_on = not ac_currently_on
             print(f"pushed button at temperature of {temperature_current}; ac should now be {ac_currently_on}")
+        else:
+            print(f"temperature is {temperature_current}; not pushing button")
         sleep(60)
