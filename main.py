@@ -18,4 +18,5 @@ if __name__ == "__main__":
         if (ac_currently_on and temperature_current < temperature_bound_lower) or (not ac_currently_on and temperature_current > temperature_bound_upper):
             push_button()
             ac_currently_on = not ac_currently_on
+            print(f"pushed button at temperature of {temperature_current}; ac should now be {ac_currently_on}")
         sleep(60)
