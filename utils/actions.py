@@ -40,11 +40,12 @@ def get_temperature() -> float:
     return temperature
 
 
-def push_button() -> None:
+def push_button(duration=0.01) -> None:
     """Actuate the motor to press and release the button on the
     air conditioning unit
+    :param duration:        pulse duration in seconds
     """
     GPIO.output(15, GPIO.LOW)
     GPIO.output(14, GPIO.HIGH)
-    sleep(0.01)
+    sleep(duration)
     GPIO.output(14, GPIO.LOW)
