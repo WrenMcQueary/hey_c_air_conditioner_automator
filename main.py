@@ -23,5 +23,5 @@ if __name__ == "__main__":
             ac_currently_on = not ac_currently_on
             logger.info(f"pushed button at temperature of {temperature_current}; ac should now be {ac_currently_on}")
         else:
-            logger.info(f"temperature is {temperature_current}; not pushing button")
+            logger.info(f"temperature is {temperature_current} and ac is {ac_currently_on};  not pushing button")
         sleep(60)
