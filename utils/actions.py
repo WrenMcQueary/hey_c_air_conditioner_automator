@@ -45,7 +45,7 @@ def push_button(duration=0.1) -> None:
     air conditioning unit
     :param duration:        pulse duration in seconds
     """
-    GPIO.output(15, GPIO.LOW)
-    GPIO.output(14, GPIO.HIGH)
-    sleep(duration)
     GPIO.output(14, GPIO.LOW)
+    GPIO.output(15, GPIO.HIGH)
+    sleep(duration)
+    GPIO.output(15, GPIO.LOW)

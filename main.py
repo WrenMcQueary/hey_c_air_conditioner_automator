@@ -15,7 +15,7 @@ from settings import temperature_bound_lower, temperature_bound_upper
 if __name__ == "__main__":
     logger = get_custom_logger()
 
-    ac_currently_on = False
+    ac_currently_on = True  # When the Raspberry Pi turns on, the motor will push the button unprompted.  Therefore assume the AC is initially on.
     while True:
         temperature_current = get_temperature()
         if (ac_currently_on and temperature_current < temperature_bound_lower) or (not ac_currently_on and temperature_current > temperature_bound_upper):
