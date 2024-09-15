@@ -14,6 +14,7 @@ from settings import temperature_bound_lower, temperature_bound_upper
 
 if __name__ == "__main__":
     logger = get_custom_logger()
+    logger.info(f"---- STARTING NEW RUNTIME ----")
 
     ac_currently_on = True  # When the Raspberry Pi turns on, the motor will push the button unprompted.  Therefore assume the AC is initially on.
     while True:
