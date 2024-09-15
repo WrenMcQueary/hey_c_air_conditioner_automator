@@ -99,8 +99,8 @@ class TemperatureTable:
         """
         # Handle errors
         # voltage not a float
-        if not isinstance(voltage, float):
-            raise TypeError("voltage must be a float")
+        if not isinstance(voltage, float) and not isinstance(voltage, int):
+            raise TypeError("voltage must be a float or int")
 
         # Get the datapoint immediately below and above
         highest_point_below = self.fahrenheit_voltage_pairs[0]
@@ -112,5 +112,11 @@ class TemperatureTable:
                 lowest_point_above = pair.copy()
                 break
         # Interpolate and return
-        percent_from_lower_to_upper = (voltage - highest_point_below.voltage) / (lowest_point_above.voltage - highest_point_below.voltage)
+        try:
+            percent_from_lower_to_upper = (voltage - highest_point_below.voltage) / (lowest_point_above.voltage - highest_point_below.voltage)
+        except ZeroDivisionError:   # If the voltage is outside the temperature table
+            if voltage < 1.5:
+                return -1000
+            else:
+                return 1000
         return highest_point_below.temperature * (1 - percent_from_lower_to_upper) + lowest_point_above.temperature * (percent_from_lower_to_upper)
