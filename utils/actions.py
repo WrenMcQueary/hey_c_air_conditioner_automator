@@ -24,6 +24,7 @@ channel = AnalogIn(mcp, MCP.P0)
 
 # Set up GPIO
 GPIO.setmode(GPIO.BCM)   # Use physical pin numbering.  The alternative is GPIO.setmode(GPIO.BCM), which uses "NAME" on the pinout diagram instead of "Pin#".
+GPIO.setup(12, GPIO.OUT, initial=GPIO.LOW)
 GPIO.setup(14, GPIO.OUT, initial=GPIO.LOW)
 GPIO.setup(15, GPIO.OUT, initial=GPIO.LOW)
 
@@ -38,6 +39,20 @@ def get_temperature() -> float:
     # Convert to a temperature in Fahrenheit
     temperature = temperature_table.voltage_to_temperature(voltage)
     return temperature
+
+
+def lock_motor() -> None:
+    """
+    Prevent high signals from reaching the motor.
+    """
+    GPIO.output(12, GPIO.LOW)
+
+
+def unlock_motor() -> None:
+    """
+    Allow high signals to reach the motor.
+    """
+    GPIO.output(12, GPIO.HIGH)
 
 
 def push_button(duration=0.1) -> None:

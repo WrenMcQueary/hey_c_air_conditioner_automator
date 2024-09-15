@@ -7,7 +7,7 @@ be off.
 
 from time import sleep
 
-from utils.actions import get_temperature, push_button
+from utils.actions import get_temperature, push_button, unlock_motor
 from utils.logger import get_custom_logger
 from settings import temperature_bound_lower, temperature_bound_upper
 
@@ -16,7 +16,8 @@ if __name__ == "__main__":
     logger = get_custom_logger()
     logger.info(f"---- STARTING NEW RUNTIME ----")
 
-    ac_currently_on = True  # When the Raspberry Pi turns on, the motor will push the button unprompted.  Therefore assume the AC is initially on.
+    ac_currently_on = False
+    unlock_motor()
     while True:
         temperature_current = get_temperature()
         if (ac_currently_on and temperature_current < temperature_bound_lower) or (not ac_currently_on and temperature_current > temperature_bound_upper):
